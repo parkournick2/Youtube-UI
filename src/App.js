@@ -1,24 +1,29 @@
+import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import Nav from './components/Nav'
 
-const GlobalStyle = createGlobalStyle`
-  body{
-    margin: 0px;
-    font-family:sans-serif
-  }
-`;
+export default function App() {
 
-const MainContainer = styled.div``;
+  const theme = createMuiTheme({
+    palette:{
+      type: 'dark',
+      primary:{
+        main: '#CC0000',
+      },
+      secondary: {
+        main: '#3EA6FF',
+      },
+      background:{
+        default: '#232323',
+        dark: '#181818',
+        paper: '#232323'
+      }
+    }
+  })
 
-export default class App extends React.Component {
-  state = {};
-
-  render() {
-    return (
-      <>
-        <GlobalStyle />
-        <MainContainer>Sou lindo</MainContainer>
-      </>
-    );
-  }
+  return (
+    <ThemeProvider theme={theme}>
+      <Nav />
+    </ThemeProvider>
+  );
 }
